@@ -13,7 +13,7 @@ def after_request(response):
     response.headers["Access-Control-Allow-Headers"] = "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization"
     return response
 
-@app.route('/', methods=["GET"])
+@app.route('/people', methods=["GET"])
 def get_people():
     people = db_controller.get_rows()
     return jsonify(people)
@@ -27,15 +27,14 @@ def insert_person():
     result = db_controller.insert_row(uname, byear, pword)
     return jsonify(result)
 
-@app.route('/<name>', methods=['GET'])
+@app.route('/person/<name>', methods=['GET'])
 def get_person_by_name(name):
     person = db_controller.get_by_name(name)
     return jsonify(person)
 
-@app.route('/<id>', methods=['GET'])
+@app.route('/person/<id>', methods=['GET'])
 def get_person_by_id(id):
     person = db_controller.get_by_id(id)
-    print(person)
     return jsonify(person)
 
 if __name__ == '__main__':
