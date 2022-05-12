@@ -39,4 +39,4 @@ def get_person_by_id(id):
 
 if __name__ == '__main__':
     create_tables()
-    app.run(port=5000, debug=False)
+    app.run(port=5000)
