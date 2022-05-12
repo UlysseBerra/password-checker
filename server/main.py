@@ -27,12 +27,12 @@ def insert_person():
     result = db_controller.insert_row(uname, byear, pword)
     return jsonify(result)
 
-@app.route('/person/<name>', methods=['GET'])
+@app.route('/person/name/<name>', methods=['GET'])
 def get_person_by_name(name):
     person = db_controller.get_by_name(name)
     return jsonify(person)
 
-@app.route('/person/<id>', methods=['GET'])
+@app.route('/person/id/<id>', methods=['GET'])
 def get_person_by_id(id):
     person = db_controller.get_by_id(id)
     return jsonify(person)
