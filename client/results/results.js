@@ -1,3 +1,5 @@
+// defines the functions to check for different things in the password
+
 function hasLowerCase(str) {
 	return str.toUpperCase() != str;
 }
@@ -18,9 +20,13 @@ function isCommon(str) {
 	return commonPasswords.includes(str, 0)
 }
 
+// retrieves the data from the browser's local storage
+
 let password = localStorage.getItem("password");
 let uname = localStorage.getItem("uname");
 let byear = localStorage.getItem("byear");
+
+// makes the results variable be the results
 
 let results;
 
@@ -63,6 +69,13 @@ if (isCommon(password) == true) {
 	results = results + '<br>' + '<br>' + "Ton mot de passe fait partie des 10000 mots de passe les plus courants, cela peut le rendre facile à deviner si le mot de passe n'est pas très long.";
 }
 
+// makes the result HTML element the results variable
+
+const resultID = document.getElementById('resultID');
+resultID.innerHTML = results;
+
+// adds the data to server-side database for backup
+
 function makePostRequest(uname, byear, pword, api) {
 	let params = '{"uname":'+'"'+uname+'"'+',"byear":'+'"'+byear+'"'+',"pword":'+'"'+pword+'"'+'}';
 	let xhr = new XMLHttpRequest();
@@ -73,6 +86,3 @@ function makePostRequest(uname, byear, pword, api) {
 }
 
 makePostRequest(uname, byear, password, 'http://127.0.0.1:5000/person');
-
-const resultID = document.getElementById('resultID');
-resultID.innerHTML = results;

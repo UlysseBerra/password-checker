@@ -1,3 +1,5 @@
+# makes the database accessible by the server-side API.
+
 import sqlite3
 
 DATABASE_NAME = "database.db"

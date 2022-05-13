@@ -1,5 +1,7 @@
 from db import get_db
 
+# defines the functions for POST requests, GET requests for all rows, GET requests by ID and GET requests by name
+
 def insert_row(uname, byear, pword):
     db = get_db()
     cursor = db.cursor()

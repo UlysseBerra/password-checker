@@ -1,4 +1,7 @@
+// resets the form onload
 document.getElementById("password-test-form").reset();
+
+// makes the index page redirect to the results page and adds the data to the browser's local storage
 
 document.getElementById("button").addEventListener("click", redirectPage);
 
